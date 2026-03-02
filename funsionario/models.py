@@ -39,6 +39,18 @@ class Staff(BaseModel):
         return f"{self.emp_id} - {self.name}"
 
 
+
+# =====================================================
+# STAFF POSITION
+# =====================================================
+class StaffUser(models.Model):
+    staff = models.OneToOneField(Staff, on_delete=models.CASCADE, related_name="funsionariouser")
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        template = '{0.staff} - {0.user}'
+        return template.format(self)
+
 # =====================================================
 # STAFF POSITION
 # =====================================================

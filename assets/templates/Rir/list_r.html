@@ -29,10 +29,11 @@
                     <a href="{% url 'h-rir' %}" class="btn btn-sm btn-info"><i class="fa fa-list"></i> Historia Dados</a>
                      <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Imprime Dados</a>
                     {% else %}
+                     <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Imprime Dados</a>
                     {% endif %}
                     {% endif %}
                     <hr>
-                    <h5 align="center">Resjistu(RIR)</h5>
+                    <h5 align="center">{{legend|upper}}</h5>
                 </div>
             </div>
             <div class="card">

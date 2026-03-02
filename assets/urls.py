@@ -13,4 +13,8 @@ urlpatterns = [
 
 	#history data
 	path('Lista-historia.html/', views.history_rir, name='h-rir'),
+
+
+	#equipamento-gabinete
+	path('Lista-Equipamento-Gabinete.html/', views.list_e_gab, name='list-gab'),
 ]

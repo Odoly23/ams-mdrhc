@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="{% url 'home' %}" class="brand-link">
-      <img src="{% static 'Image/MDHRC.png'%}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{% static 'Image/MDHRC.png'%}" alt="MDHRC logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AMS-MDRHC</span>
     </a>
     <!-- Sidebar -->
@@ -22,6 +22,11 @@
            {% include 'navbar/Departement.html' %}
           {% elif request.user.groups.all.0.name == 'Staffassets' %}
            {% include 'navbar/Staffassets.html' %}
+          {% elif request.user.groups.all.0.name == 'Gabinete' %}
+           {% include 'navbar/Gabinete.html' %}
+          {% elif request.user.groups.all.0.name == 'funs' %}
+           {% include 'navbar/funs.html' %}
+          {% else %}
          {% endif %}
        {% endif %}
       </nav>
