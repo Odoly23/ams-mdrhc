@@ -16,3 +16,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db import transaction
 
 # Create your views here.
+@login_required
+@allowed_users(allowed_roles=['Super Admin', 'Admin_Asset', 'Staffassets'])
+def summary(request):
+    objects1, objects2, objects3, objects4, objects5 = [],[],[],[],[]
+    group = request.user.groups.values_list('name', flat=True).first()
+    context = {
+        'group': group,
+        'title': 'Sumario Geral',
+        'legend': 'Sumario Geral',
+        'sumActive': "active",
+        'link_antes': [{'link_name':"r-list",'link_text':"Rir"}],
+
+    }
+    return render(request, 'sumario/tab.html', context)
+    

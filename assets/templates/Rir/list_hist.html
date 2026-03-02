@@ -22,8 +22,8 @@
             <div class="card">
                 <div class="card-body text-center">
                     {% if page == 'rir_hist' %}
-                         <a href="{% url 'h-rir' %}" class="btn btn-sm btn-danger"><i class="fa fa-list"></i> Dados Deleted</a>
-                     <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Dados Updated</a>
+                         <a href="{% url 'h-rir' %}" class="btn btn-sm btn-danger"><i class="fa fa-list"></i> Dados Deleted | <span class="badge badge-warning rounded-pill px-3">{{objects1}}</span></a>
+                     <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Dados Updated | <span class="badge badge-warning rounded-pill px-3">{{objects2}}</span></a>
                     {% else %} 
                     {% if group == 'Super Admin' %}
                     <a href="{% url 'h-rir' %}" class="btn btn-sm btn-info"><i class="fa fa-list"></i> Historia Dados</a>
@@ -58,8 +58,9 @@
                                 <th>Company</th>
                                 <th>Arrival Date</th>
                                 <th>Items</th>
+                                <th>Hamos Husi</th>
+                                <th>Update Husi</th>
                                 <th>Status</th>
-                                <th>Actions</th>
                                 {% if group == 'Super Admin' %}
                                     <th>#</th>
                                 {% endif %}
@@ -86,35 +87,14 @@
                                         {% endfor %}
                                     </ul>
                                 </td>
+                                <td>koko</td>
+                                <td>koko</td>
                                 <td>
                                     {% if rir.is_approved %}
                                         <span class="badge bg-success rounded-pill px-3"><i class="fa fa-check"></i>Aprovado</span>
                                     {% else %}
                                         <span class="badge bg-warning rounded-pil px-3"><i class="fa fa-refresh fa-spin"></i> Pending</span>
                                     {% endif %}
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                    {% if group == 'Staffassets' %}
-                                         <a href="{% url 'rir_item_create' rir.hashed %}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></a>
-
-                                         <a href="{% url 'd-drir' rir.hashed %}" class="btn btn-sm btn-info ml-1"><i class="fa fa-search-plus"></i></a>
-                                    {% elif group == 'Admin_Asset' %}
-                                          {% if not rir.is_approved %}
-                                            <a href="{% url 'aprova-rir' rir.hashed %}" class="btn btn-sm btn-success"> Aprova</a>
-                                            {% elif rir.is_approved %}
-                                                -    
-                                            {% else %}
-                                            <span class="badge badge-info rounded-pill px-3">Prosesa <i class="fa fa-refresh fa-spin"></i></span>
-                                         {% endif %}
-                                    {% else %}
-                                        {% if rir.is_approve %}
-                                        <span class="badge badge-info rounded-pill px-3">Aprovadu <i class="fa fa-check"></i></span>
-                                        {% else %}
-                                            <span class="badge badge-info rounded-pill px-3">Prosesa <i class="fa fa-refresh fa-spin"></i></span>
-                                        {% endif %}
-                                    {% endif %}
-                                    </div>
                                 </td>
                                 {% if group == 'Super Admin' %}
                                     <td>

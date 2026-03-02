@@ -21,7 +21,10 @@ from django.db import transaction
 @allowed_users(allowed_roles=['Super Admin', 'Admin_Asset', 'Staffassets'])
 def List_rir(request):
     group = request.user.groups.values_list('name', flat=True).first()
-    objects = RIR.active_objects.select_related().all()
+    if group == 'Super Admin':
+        objects = RIR.objects.select_related().all()
+    else:
+        objects = RIR.active_objects.select_related().all()
     context = {
         'group': group,
         'page': 'rir',
@@ -32,6 +35,26 @@ def List_rir(request):
         'link_antes': [{'link_name':"r-list",'link_text':"Rir"}],
     }
     return render(request, 'Rir/list_r.html', context)
+
+
+#dados historya data geral
+@login_required
+@allowed_users(allowed_roles=['Super Admin'])
+def history_rir(request):
+    group = request.user.groups.values_list('name', flat=True).first()
+    objects = RIR.objects.select_related().all()
+    objects1 = RIR.active_objects.filter(deleted_at__isnull=False).count()
+    objects2 = RIR.active_objects.filter(updated_at__isnull=False).count()
+    context = {
+        'group': group,
+        'page': 'rir_hist',
+        'objects': objects,
+        'title': 'Lista Historia Dados  Rir',
+        'legend': 'Lista Historia Dados  Rir',
+        'RirActive': "active", 'objects1':objects1, 'objects2':objects2,
+        'link_antes': [{'link_name':"r-list",'link_text':"Rir"}],
+    }
+    return render(request, 'Rir/list_hist.html', context)
 
 @login_required
 @allowed_users(allowed_roles=['Super Admin', 'Admin_Asset', 'Staffassets'])

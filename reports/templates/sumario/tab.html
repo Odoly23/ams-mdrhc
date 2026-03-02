@@ -1,0 +1,103 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-12">
+            <div class="row">
+                {% for d in dep_dummy %}
+                    <div class="col-3">
+                    <div class="card">
+                        <div class="card-header bg-info text-white text-center"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>    
+        </div>
+          <div class="col-lg-12">
+            <div class="card">
+                
+              <div class="card-body">
+                <div class="row">
+
+                    <div class="col-sm-4 ">
+                  <div class="card ">
+                    <div class="card-header bg-success">
+                      <h5 class="text-center text-white">Total Assets </h5>
+                    </div>
+                      <div class="text-center">
+                    <div class="card-body d-flex justify-content-between">
+                     <a href="">
+                        <i class="fa fa-table fa-2x">Sumario</i>
+                      </a>
+                      <a href="" class="ml-2">
+                        <i class="fa fa-bar-chart fa-2x">Grafico</i>
+                      </a>
+                    </div>
+                     <center>
+                        <h2 style="margin-bottom: 0;">
+                          {{ totals }}
+                        </h2>
+                      </center>
+                  </div>
+                  </div>
+                </div><!--end col-->
+                 <div class="col-sm-4 ">
+                  <div class="card ">
+                    <div class="card-header bg-warning">
+                      <h5 class="text-center text-white">Total Distribuisaun</h5>
+                    </div>
+                      <div class="text-center">
+                    <div class="card-body d-flex justify-content-between">
+                     <a href="">
+                        <i class="fa fa-table fa-2x">Sumario</i>
+                      </a>
+                      <a href="" class="ml-2">
+                        <i class="fa fa-bar-chart fa-2x">Grafico</i>
+                      </a>
+                    </div>
+                     <center>
+                        <h2 style="margin-bottom: 0;">
+                          {{ totals }}
+                        </h2>
+                      </center>
+                  </div>
+                  </div>
+                </div><!--end col-->
+                 <div class="col-sm-4 ">
+                  <div class="card ">
+                    <div class="card-header bg-danger">
+                      <h5 class="text-center text-white">Total Manutensaun </h5>
+                    </div>
+                      <div class="text-center">
+                    <div class="card-body d-flex justify-content-between">
+                     <a href="">
+                        <i class="fa fa-table fa-2x">Sumario</i>
+                      </a>
+                      <a href="" class="ml-2">
+                        <i class="fa fa-bar-chart fa-2x">Grafico</i>
+                      </a>
+                    </div>
+                     <center>
+                        <h2 style="margin-bottom: 0;">
+                          {{ totals }}
+                        </h2>
+                      </center>
+                  </div>
+                  </div>
+                </div><!--end col-->
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}

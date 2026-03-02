@@ -28,7 +28,9 @@ urlpatterns = [
     path('', include('main.urls')),
     path('assets/', include('assets.urls')),
     path('summernote/', include('django_summernote.urls')),
-    path('Distribuisaun/', include('distibuition.urls'))
+    path('Distribuisaun/', include('distibuition.urls')),
+    path('Relatoriu/', include('reports.urls')),
+    path('api/report/', include('reports.api.urls')),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

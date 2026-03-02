@@ -8,5 +8,9 @@ urlpatterns = [
 	path('Upload-excel/', views.import_rir_excel, name='import_rir_excel'),
 	path('Save-import/', views.save_import_rir, name='save_import_rir'),
 	path('aprova-rir/<str:hashed>/', views.rir_approve, name='aprova-rir'),
-	path('Detaillu-dadus-rir/<str:hashed>/', views.detail_rir, name='d-drir')
+	path('Detaillu-dadus-rir/<str:hashed>/', views.detail_rir, name='d-drir'),
+
+
+	#history data
+	path('Lista-historia.html/', views.history_rir, name='h-rir'),
 ]
