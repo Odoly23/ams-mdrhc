@@ -1,0 +1,43 @@
+:root {
+    --mdrhc-brown: #8B5E3C;
+    --mdrhc-dark-brown: #6E472E;
+    --mdrhc-green: #2E7D32;
+}
+
+.mdrhc-navbar {
+    background-color: var(--mdrhc-brown);
+}
+
+.logo-circle {
+    width: 35px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #dcdcdc !important;
+}
+
+.footer {
+    background-color: var(--mdrhc-dark-brown);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+/* Mobile spacing */
+@media (max-width: 991px) {
+    .navbar-nav {
+        padding-top: 10px;
+    }
+    .nav-item {
+        padding: 5px 0;
+    }
+}

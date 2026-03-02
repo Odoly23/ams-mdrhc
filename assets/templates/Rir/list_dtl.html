@@ -1,0 +1,201 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-body">
+                	<a href="" class="btn btn-info btn-sm mb-2"><i class="fa fa-download"></i> Download Barcode</a>
+                	<a href="" class="btn btn-success btn-sm mb-2"><i class="fa fa-download"></i> Exporta Excel</a>
+                	<a href="" class="btn btn-primary btn-sm mb-2"><i class="fa fa-plus-square"></i> Rejistu</a>
+                	<hr>
+                    <h5 align="center">{{legend|upper}}</h5>
+                </div>
+            </div>
+            <div class="card">
+            	<div class="card-body">
+            			<div class="row">
+            	<div class="col-sm-6">
+		        	<div class="table-responsive">
+		        		<table class="table table-striped">
+		        			<tr>
+		        				<th>Rir No :</th> <td>{{objects.rir_no}}</td>
+		        			</tr>
+		        			<tr>
+		        				<th>No Invoice</th> <td>{{objects.invoice_no}}</td>
+		        			</tr>
+		        			<tr>
+		        				
+		        				<th>No Contentor</th> <td>{{objects.container_no}}</td>
+		        			</tr>
+		        		</table>
+		        	</div>
+		        </div>
+		        <div class="col-sm-6">
+		        <table class="table table-striped">
+		        			<tr>
+		        				<th>Data Entrada :</th> <td>{{objects.arrival_date|date:"d-m-y"}}</td>
+		        			</tr>
+		        			<tr>
+		        				<th>Status</th> 
+		        				<td>
+		        					{% if obj.is_approved %}
+		        						<span class="badge badge-success rounded-pill px-3"><i class="fa fa-check"></i> Aprovado</span>
+		        					{% else %}
+		        						<span class="badge badge-warning rounded-pill px-3"><i class="fa fa-refresh fa-spin"></i> Prosesa</span>
+		        					{% endif %}
+		        				</td>
+		        			</tr>
+		        			<tr>
+		        				
+		        				<th>Deskrisaun</th> <td>{{objects.description|safe}}</td>
+		        			</tr>
+		        		</table>
+		        </div>
+		         </div>
+            	</div>
+            	<hr>
+              <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-sm" width="100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>RIR No</th>
+                                <th>Container No</th>
+                                <th>Company</th>
+                                <th>Arrival Date</th>
+                                <th>Items</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {% for rir in objects1 %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ rir.rir_no }}</td>
+                                
+                                <td>{{ rir.container_no }}</td>
+                                <td>{{ rir.company.name }}</td>
+                                <td>{{ rir.arrival_date }}</td>
+                                <td>
+                                    <ul>
+                                        {% for item in rir.items.all %}
+                                            <li>
+                                                {{ item.category.name }} - {{ item.brand.name }} - {{ item.model.name }} |
+                                                {{ item.quantity }} unit |
+                                                {{ item.purchase_type }} |
+                                                {{ item.unit_cost }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>
+                                    {% if rir.is_approved %}
+                                        <span class="badge bg-success rounded-pill px-3"><i class="fa fa-check"></i>Approved</span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                    {% if group == 'Staffassets' %}
+                                         <a href="{% url 'rir_item_create' rir.hashed %}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></a>
+
+                                         <a href="{% url 'd-drir' rir.hashed %}" class="btn btn-sm btn-info ml-1"><i class="fa fa-search-plus"></i></a>
+                                    {% elif group == 'Admin_Asset' %}
+                                          {% if not rir.is_approved %}
+                                            <a href="{% url 'aprova-rir' rir.hashed %}" class="btn btn-sm btn-success">Approve</a>
+                                         {% endif %}
+                                    {% else %}
+                                        <span class="badge badge-info rounded-pill px-3">Prosesa <i class="fa fa-refresh fa-spin"></i></span>
+                                    {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock  %}
+{% block skrip %}
+<link href="{% static 'main/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+<style type="text/css">
+    .dtsb-searchBuilder{
+        background: #b9c7e6 !important;
+        padding: 5px
+    }
+    .dt-button, .dtsb-add {
+        background: white !important;
+    }
+</style>
+<script src="{% static 'main/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/jszip.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'main/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'main/datatables/js/buttons.colVis.min.js' %}"></script>
+
+
+<script>
+$(document).ready( function () {
+    var table = $('#example').removeAttr('width').DataTable( {
+        "scrollY": "50vh",
+        "scrollX": true,
+        "scrollCollapse": true,
+        "paging": true,
+        searchBuilder: true,
+        buttons:[
+            {
+                extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+            },
+            {
+                extend: 'print', autoPrint: true, orientation: 'landscape', pageSize: 'LEGAL',
+                exportOptions: { columns: ':visible' },
+                messageBottom: '<br/><br/><br/><table border=0 width=100%>\
+                <tr><td><center>(Afaça, __________/____________20_______)</center></td></tr>\ <tr><td colspan=2><center>O Coordenador da Escola</center><br/><br/><br/><br/></td></tr>\
+                <tr><td><U><center>(Carlos Ximenes Filipe, L.TI)</center></u></td></tr>\
+                    </table>',
+                title: '',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                            '<center><img src="http://localhost:8000/static/main/images/lologo.JPG" width="90%"/></center><br/>'
+                        );
+
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact','table-bordered' )
+                        .css( 'font-size', 'inherit' );
+                }
+            },
+            'colvis',
+        ],
+        dom: 'Bfrtip',
+        "deferRender": true
+    });
+    table.searchBuilder.container().prependTo(table.table().container());
+} );
+</script>
+{% endblock skrip %}

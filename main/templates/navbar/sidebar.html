@@ -1,0 +1,31 @@
+  {% load static %}
+  <aside class="main-sidebar sidebar-dark-info elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'home' %}" class="brand-link">
+      <img src="{% static 'Image/MDHRC.png'%}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AMS-MDRHC</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel d-flex">
+        <span class="text-white"><marquee>{{title}}</marquee></span>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="">
+       {% if user.is_authenticated %}
+         {% if request.user.groups.all.0.name == 'Super Admin' %}
+           {% include 'navbar/superAdmin.html' %}
+          {% elif request.user.groups.all.0.name == 'Admin_Asset'%}
+           {% include 'navbar/adminAsset.html' %}
+          {% elif request.user.groups.all.0.name == 'DiresaunG' %}
+           {% include 'navbar/Departement.html' %}
+          {% elif request.user.groups.all.0.name == 'Staffassets' %}
+           {% include 'navbar/Staffassets.html' %}
+         {% endif %}
+       {% endif %}
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

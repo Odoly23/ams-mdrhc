@@ -1,0 +1,73 @@
+  {% load static %}
+        <ul class="nav nav-pills nav-sidebar flex-column"
+    data-widget="treeview" role="menu" data-accordion="false">
+
+  <!-- DASHBOARD -->
+  <li class="nav-item">
+    <a href="{% url 'home' %}" class="nav-link {% if homeActive %} active {% else %}{% endif %}">
+      <i class="nav-icon fas fa-home"></i>
+      <p>Inisiu</p>
+    </a>
+  </li>
+    <li class="nav-item">
+    <a href="{% url 'r-list' %}" class="nav-link {% if RirActive %} active {% else %}{% endif %}">
+      <i class="nav-icon fas fa-list"></i>
+      <p>Rir</p>
+    </a>
+  </li>
+  <!-- MASTER DATA -->
+     <li class="nav-item">
+    <a href="{% url 'dist-dash' %}" class="nav-link {% if distActive %} active {% else %}{% endif %}">
+      <i class="nav-icon fas fa-list"></i>
+      <p>Distribuisaun</p>
+    </a>
+  </li>
+  <!-- INVENTORY -->
+     <li class="nav-item">
+    <a href="{% url 'dist-mon' %}" class="nav-link ">
+      <i class="nav-icon fas fa-list"></i>
+      <p>Inventorio</p>
+    </a>
+  </li>
+  <!-- REPORT -->
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-book-open"></i>
+      <p>
+        Monitoring
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-box nav-icon"></i>
+          <p>Assets</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-upload nav-icon"></i>
+          <p>Asset Sai</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-download nav-icon"></i>
+          <p>Assets Tama</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-exchange-alt nav-icon"></i>
+          <p>Manutensaun</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+</ul>
+     

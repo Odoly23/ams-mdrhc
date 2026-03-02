@@ -1,0 +1,138 @@
+  {% load static %}
+        <ul class="nav nav-pills nav-sidebar flex-column"
+    data-widget="treeview" role="menu" data-accordion="false">
+
+  <!-- DASHBOARD -->
+  <li class="nav-item">
+    <a href="{% url 'home' %}" class="nav-link {% if homeActive %} active {% else %}{% endif %}">
+      <i class="nav-icon fas fa-home"></i>
+      <p>Inisiu</p>
+    </a>
+  </li>
+    <li class="nav-item">
+    <a href="{% url 'd-dash' %}" class="nav-link {% if dashActive %} active {% else %}{% endif %}">
+      <i class="nav-icon fas fa-list"></i>
+      <p>Rir</p>
+    </a>
+  </li>
+  <!-- MASTER DATA -->
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-database"></i>
+      <p>
+        Master Data
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-box nav-icon"></i>
+          <p>Diresaun</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-list nav-icon"></i>
+          <p>Kategoria</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-list nav-icon"></i>
+          <p>Lokasaun</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-circle nav-icon"></i>
+          <p>Supplier</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+  <!-- ASSETS -->
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-boxes"></i>
+      <p>
+        Assets Management
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="fas fa-circle nav-icon"></i>
+          <p>All Assets</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Add Asset</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Transfer Asset</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Maintenance</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+  <!-- REPORT -->
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-chart-bar"></i>
+      <p>
+        Reports
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+
+      <li class="nav-item">
+        <a href="{% url 'tab-dash' %}" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Asset Report</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Transfer Report</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Maintenance Report</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+</ul>
+     

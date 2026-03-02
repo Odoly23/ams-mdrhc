@@ -1,0 +1,67 @@
+:root {
+    --mdrhc-brown: #8B5E3C;
+    --mdrhc-dark-brown: #6E472E;
+    --mdrhc-green: #2E7D32;
+    --mdrhc-light-gray: #f4f6f9;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #f4f6f9, #e9ecef);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Center container */
+.login-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    border: none;
+}
+
+/* Logo */
+.logo-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--mdrhc-brown);
+}
+
+/* Button */
+.btn-mdrhc {
+    background-color: var(--mdrhc-green);
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-mdrhc:hover {
+    background-color: #256528;
+}
+
+/* Title */
+.institution-title {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--mdrhc-dark-brown);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
