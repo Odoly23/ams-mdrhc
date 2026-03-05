@@ -35,7 +35,7 @@ def loginPage(request):
         if user is not None:
             login(request,user)
             AuditLogin.objects.create(user=request.user)
-            messages.success(request, 'WELLCOME')
+            messages.success(request, f'WELLCOME {user.username}')
             return redirect('home')
         else:
             messages.error(request,'Username ou Password la loos! Favor Prense fali!')

@@ -18,6 +18,6 @@ def allowed_users(allowed_roles=[]):
             group = request.user.groups.values_list('name', flat=True).first()
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
-            return render(request, 'home/404.html', status=403)
+            return render(request, 'auth/404.html', status=403)
         return wrapper_func
     return decorator

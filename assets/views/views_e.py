@@ -24,10 +24,22 @@ from distibuition.models import Distribution
 def list_e_gab(request):
     group = request.user.groups.values_list('name', flat=True).first()
     e = c_user_staff(request.user)
-    obj = e.sub_gabinete.name
-    objects = Distribution.active_objects.select_related().filter(sub_gabinete=obj.name).all()
+    objects = Distribution.active_objects.select_related().all()
+    
     context = {
-    	'title': f'Lista Equipamento Iha Gabinete {obj.name}'
+    	'title': f'Lista Equipamento Iha Gabinete'
     }
     return render(request, 'Equipment/list.html', context)
 
+
+@login_required
+@allowed_users(allowed_roles=['Admin_Asset', 'Staffassets','Super Admin'])
+def list_ger(request):
+    group =  request.user.groups.values_list('name', flat=True).first()
+    objects = Equipment.active_objects.select_related().all()
+    context = {
+        'title': 'Lista Geral Equipamento',
+        'legend': 'Lista  Geral Equipamento',
+        'group':group, 'objects':objects
+    }
+    return render(request, 'Equipment/e_list.html', context)

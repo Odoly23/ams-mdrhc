@@ -27,9 +27,9 @@ def summaryDistribusi(request):
                 "devolve": dist.filter(is_return=True).count(),})
 
     elif type_filter == "departamento":
-        items = SubDepartamento.objects.all()
+        items = SubGabinete.objects.all()
         for item in items:
-            dist = Distribution.objects.filter(sub_departamento=item)
+            dist = Distribution.objects.filter(sub_gabinete=item)
             data.append({"name": item.name,"total": dist.count(),"existe": dist.filter(is_return=False).count(),
                 "diak": dist.filter(kodition_return__name="Diak").count(),"aat": dist.filter(kodition_return__name="A'at").count(),
                 "devolve": dist.filter(is_return=True).count(),})
@@ -42,3 +42,16 @@ def summaryDistribusi(request):
         'link_antes': [{'link_name':"r-list",'link_text':"Rir"}],
     }
     return render(request, "Dist/sum_dist.html", context)
+
+
+@login_required
+@allowed_users(allowed_roles=['Admin_Asset','Staffassets','Gabinete'])
+def list_total_gab(request, id):
+    group = request.user.groups.values_list('name', flat=True).first()
+    objects = Distribution.active_objects.select_related().filter(sub_gabinete=data)
+    context = {
+        'title': f'Lista Equipamento {data.name}',
+        'legend': f'lista Equipamento {data.name}',
+        'group':group, 'data':data, 'objects':objects
+    }
+    return render(request, "Dist/dist_list.html", context)

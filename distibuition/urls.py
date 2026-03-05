@@ -8,4 +8,7 @@ urlpatterns = [
 
 
     path('Distribution/summary/', views.summaryDistribusi, name='summary-distribusi'),
+
+    #filter
+    path('Lista-Equipamento-Gab/<str:id>/', views.list_total_gab, name='l-gab')
 ]

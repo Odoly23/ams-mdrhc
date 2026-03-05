@@ -17,4 +17,7 @@ urlpatterns = [
 
 	#equipamento-gabinete
 	path('Lista-Equipamento-Gabinete.html/', views.list_e_gab, name='list-gab'),
+
+	#equipament-geral
+	path('Lista-Geral-Equipamento/', views.list_ger, name='ger-list'),
 ]

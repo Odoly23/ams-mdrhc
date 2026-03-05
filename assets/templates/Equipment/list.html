@@ -1,11 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>koko</title>
-</head>
-<body>
-koko
-</body>
-</html>
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-plus-square"></i> Lista Geral</a>
+                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Imprime Dados</a>
+                    <a href="" class="btn btn-warning btn-sm"><i class="fa fa-list"></i> Sumario</a>
+                </div>
+            </div>  
+        </div>
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm" width="100%"> 
+                        <thead>
+                            <tr>
+                                <th rowspan="2">#</th>
+                                <th rowspan="2" class="text-center">Departamento/Gabinete</th>
+                                <th colspan="4" class="text-center">Kondisaun</th>
+                                
+                                <tr>
+                                    <th style="background-color: lightgreen; text-align:center;">Total</th>
+                                    <th>Uza Hela</th>
+                                    <th>La Uza</th>
+                                    <th style="background-color: red; text-align:center;">Devolve</th>
+                                </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Departamento Unidade Infrastrutura E Seguransa</td>
+                                <td><a href="" class="text-center">5</a></td>
+                                <td><a href="" class="text-center">4</a></td>
+                                <td><a href="" class="text-center">0</a></td>
+                                <td><a href="" class="text-center">1</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Departamento Unidade Sistema Gestaun De Dados</td>
+                                <td><a href="" class="text-center">8</a></td>
+                                <td><a href="" class="text-center">6</a></td>
+                                <td><a href="" class="text-center">1</a></td>
+                                <td><a href="" class="text-center">1</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
